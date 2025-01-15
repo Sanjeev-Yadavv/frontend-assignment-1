@@ -9,6 +9,7 @@ import {
   Heading,
   Input,
   Select,
+  Button,
 } from "@chakra-ui/react";
 import "./home.css";
 import { useNavigate } from "react-router-dom";
@@ -23,6 +24,8 @@ const Home = () => {
   const [search, setSearch] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [sortingOrder, setSortingOrder] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemPerPage = 5;
 
   const URL = "https://jsonplaceholder.typicode.com/users";
 
@@ -52,9 +55,8 @@ const Home = () => {
 
     if (filtered) {
       setFilteredData(filtered);
-    } else {
-      setFilteredData(data);
     }
+    setCurrentPage(1);
   }, [search, data, sortingOrder]);
 
   const navigateUser = (id) => {
@@ -73,7 +75,26 @@ const Home = () => {
     return <Heading>{error}</Heading>;
   }
 
-  console.log(sortingOrder);
+  // for pagination
+
+  const startIndex = (currentPage - 1) * itemPerPage;
+  const endIndex = startIndex + itemPerPage;
+
+  let paginatedData = filteredData.slice(startIndex, endIndex);
+  let totalPage = Math.ceil(filteredData.length / itemPerPage);
+
+  function handleNext() {
+    if (currentPage < totalPage) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  }
+  function handlePrevious() {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  }
+
+  // console.log(sortingOrder);
   return (
     <Box className="mainContainer">
       <Box className="topContainer" display="flex" gap={10} m={10}>
@@ -97,7 +118,7 @@ const Home = () => {
         Users List.
       </Heading>
       <Box className="container">
-        {filteredData?.map((user, index) => (
+        {paginatedData?.map((user, index) => (
           <Box
             className="userData"
             key={index}
@@ -117,6 +138,15 @@ const Home = () => {
             </Text>
           </Box>
         ))}
+      </Box>
+      <Box p={10} display="flex" gap={10}>
+        <Button disabled={currentPage < 2} onClick={handlePrevious}>
+          Previous
+        </Button>
+        <Button disabled={currentPage == totalPage} onClick={handleNext}>
+          Next
+        </Button>
+        <Text>Page: {currentPage}</Text>
       </Box>
     </Box>
   );

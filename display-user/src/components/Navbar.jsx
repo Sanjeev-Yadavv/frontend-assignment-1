@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Link as ChakraLink } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import "./navbar.css";
+import { ColorModeButton } from "./ui/color-mode";
 
 const Navbar = () => {
   const links = [
@@ -27,6 +28,7 @@ const Navbar = () => {
           {link.path}
         </ChakraLink>
       ))}
+      <ColorModeButton></ColorModeButton>
     </Box>
   );
 };
