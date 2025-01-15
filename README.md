@@ -9,6 +9,7 @@ Note: For styling , we use plain CSS and chakra UI in this project.
 2- First we install react router dom for routing.
 3- We have also use redux in this project to manage the state globally.
 4- we also use thunk middleware to perform asynchronous operations in redux.
+5- we install axios for fetching data.
 
 project is also completely responsive.
 
