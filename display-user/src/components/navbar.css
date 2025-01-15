@@ -1,0 +1,10 @@
+.navbar {
+  background-color: gray;
+  margin-bottom: 30px;
+}
+
+.link {
+  outline: none;
+  padding: 8px;
+  font-size: large;
+}

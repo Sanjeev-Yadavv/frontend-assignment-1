@@ -1,0 +1,18 @@
+.cardDetail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.userDetail {
+  width: 50vw;
+  margin: 30px auto;
+  border: 2px solid grey;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 21px -12px;
+}

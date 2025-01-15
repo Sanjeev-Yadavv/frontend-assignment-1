@@ -1,0 +1,25 @@
+.userData {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 2px solid grey;
+  flex-direction: column;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.userData :hover {
+  box-shadow: 2px 2px 21px -12px;
+  transition: ease-in-out;
+}
