@@ -11,7 +11,7 @@ const UserDetail = () => {
   const isLoading = useSelector((state) => state.isLoading);
   const error = useSelector((state) => state.error);
 
-  const filteredData = data?.filter((user, index) => {
+  const selectedData = data?.filter((user, index) => {
     return user.id == id;
   });
 
@@ -20,13 +20,17 @@ const UserDetail = () => {
   };
 
   // console.log("filterd data", filteredData);
-  if (!filteredData) {
-    return <Heading>Please select user first to see the details</Heading>;
+  if (selectedData.length == 0) {
+    return (
+      <Heading textAlign="center">
+        Please select user first to see the details
+      </Heading>
+    );
   }
   return (
     <div className="cardDetail">
       <Heading>Here is Selected User's detail</Heading>
-      {filteredData?.map((user, index) => (
+      {selectedData?.map((user, index) => (
         <Box className="userDetail" key={index}>
           <Text>
             <strong>Name: </strong>

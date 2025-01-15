@@ -76,7 +76,7 @@ const Home = () => {
   console.log(sortingOrder);
   return (
     <Box className="mainContainer">
-      <Box display="flex" gap={10} m={10}>
+      <Box className="topContainer" display="flex" gap={10} m={10}>
         <Input
           w="30vw"
           type="text"
